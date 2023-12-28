@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInActivity">
+
+    <Button
+        android:id="@+id/signin_tosignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.821" />
+
+    <EditText
+        android:id="@+id/signin_etid"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="224dp"
+        android:hint="임시..ID 받아오는 에딧텍스트"
+        app:layout_constraintBottom_toTopOf="@+id/signin_tosignup"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <EditText
+        android:id="@+id/signin_etspinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/signin_etid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="임시..스피너 선택 목록 받아오기."/>
+
+    <EditText
+        android:id="@+id/signin_etpw"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="150dp"
+        android:hint="임시..pw 받아오는 에딧텍스트"
+        app:layout_constraintBottom_toTopOf="@+id/signin_tosignup"
+        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="textPassword"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

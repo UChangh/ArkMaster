@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">ArkMaster</string>
+    <string name="signup_toptap">회원가입</string>
+    <string name="signup_emailHint">e-mail을 입력하세요</string>
+    <string name="signup_nickname">닉네임</string>
+    <string name="signup_nicnameHint">닉네임을 입력하세요</string>
+    <string name="signup_erroremail">이미 존재하는 이메일 입니다.</string>
+    <string name="signup_errornickname">이미 존재하는 닉네임 입니다.</string>
+    <string name="signup_name">이름</string>
+    <string name="signup_nameHint">이름을 입력해주세요</string>
+    <string name="signup_errorname">이름을 입력해주세요</string>
+    <string name="signup_password">비밀번호</string>
+    <string name="signup_passwordHint">비밀번호를 입력하세요</string>
+    <string name="signup_errorpassword">비밀번호를 입력하세요</string>
+    <string name="signup_checkpassword">비밀번호 확인</string>
+    <string name="signup_checkpasswordHint">동일한 비밀번호를 입력하세요.</string>
+    <string name="signup_errorcheckpassword">비밀번호가 다릅니다.</string>
+    <string name="signup_buttonText">회원 가입</string>
+    <string name="signup_pwlimit">소문자, 대문자, 특수문자를 포함한 8~16자</string>
+
+
+
+    <string-array name="signup_spinnerarray">
+        <item>최신순</item>
+        <item>좋아요순</item>
+        <item>리뷰순</item>
+    </string-array>
+
+    <string name="type_wizard">마법사</string>
+    <string name="type_martial_artist">무도가</string>
+    <string name="type_assassin">암살자</string>
+    <string name="type_hunter_woman">헌터(여)</string>
+    <string name="type_hunter_man">헌터(남)</string>
+    <string name="type_soldier">전사</string>
+
+
+
+
+
+    <string name="home_kr">홈</string>
+    <string name="my_page_kr">마이 페이지</string>
+    <string name="user_name">닉네임</string>
+    <string name="user_email">이메일</string>
+    <string name="main_character_image_setting">설정</string>
+    <string name="my_comments">댓글</string>
+    <string name="button_my_page">MY PAGE</string>
+    <string name="button_home">HOME</string>
+
+    <string name="transition_image">transImage</string>
+    <string name="transition_name">transName</string>
+
+
+    <string name="set_main_character_popup">대표 캐릭터 설정</string>
+    <string name="text_search_hint">캐릭터 이름으로 검색해 보세요.</string>
+
+    <string-array name="characters_name">
+        <item>브레이커</item>>
+        <item>소서리스</item>
+        <item>스트라이커</item>
+        <item>리퍼</item>
+        <item>건슬링어</item>
+        <item>바드</item>
+        <item>서머너</item>
+        <item>블레이드</item>
+        <item>창술사</item>
+        <item>아르카나</item>
+        <item>홀리나이트</item>
+    </string-array>
+</resources>
