@@ -8,7 +8,7 @@ data class User(
     val name: String,
     val userId: String,  // userEmail -> userId
     val nickname: String,
-    val representativeCharacter: Character? = null
+    var representativeCharacter: Int? = null    // Character Type -> Int Type, val -> var
 )
 
 val datalist = mutableListOf<User>()
