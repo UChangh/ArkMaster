@@ -37,7 +37,7 @@ class MyPageActivity:AppCompatActivity() {
         binding.myCommentsRecyclerView.adapter = MyCommentsRecyclerAdapter(mctd.dataset)
 
         binding.tvUserName.text = datalist.find { it.userId == currentUserId }?.nickname?:"어흥"
-        binding.tvUserEmail.text = datalist.find { it.userId == currentUserId }?.name?:"엄청나게 무서운 포즈 어흥"
+        binding.tvUserEmail.text = datalist.find { it.userId == currentUserId }?.userId?:"엄청나게 무서운 포즈 어흥"
         // 스피너 팝업 띄우는 부분
         binding.tvSpinnerPopup.setOnClickListener {
             val inflater = this.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -55,7 +55,8 @@ class MyPageActivity:AppCompatActivity() {
             spinners.setSelection(0)
 
             // dialog 만들기
-            val builder = AlertDialog.Builder(this)
+            AlertDialog
+                .Builder(this)
                 .setTitle(resources.getString(R.string.set_main_character_popup))
                 .setView(view)
                 .create()
@@ -70,7 +71,6 @@ class MyPageActivity:AppCompatActivity() {
                         datalist.find { it.userId == currentUserId }.let {
                             it?.representativeCharacter = image.profileImage
                         }
-//                        toast(datalist.find { it.userId == currentUserId }?.representativeCharacter.toString())
                     }
 
                 }
