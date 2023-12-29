@@ -1,5 +1,6 @@
 package com.android.arkmaster.mypage
 
+import com.android.arkmaster.main.CharacterManager
 import java.time.LocalDate
 
 class MyCommentsTempDatas {
@@ -25,5 +26,9 @@ class MyCommentsTempDatas {
 
     // comments size
     fun getCommentSize(name: String): Int = dataset.count { it.charName == name }
+
+    fun getComment(korName: String): List<Comments>{
+        return dataset
+    }
 
 }
