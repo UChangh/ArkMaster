@@ -37,15 +37,15 @@ class DetailActivity : AppCompatActivity() {
 
         val characterIndex = intent.getIntExtra(characterId, -1)
         Toast.makeText(this, "$characterIndex", Toast.LENGTH_SHORT).show()
-        korName.setText(items.get(characterIndex).korName)
-        engName.setText(items.get(characterIndex).engName)
+        korName.text=items.get(characterIndex).korName
+        engName.text=items.get(characterIndex).engName
         profileImage.setImageResource(items.get(characterIndex).profileImage)
-        type.setText(items.get(characterIndex).type)
-        weapon.setText(items.get(characterIndex).weapon)
-        char_comment.setText(items.get(characterIndex).char_comment)
-        info.setText(items.get(characterIndex).info)
-        idenName.setText(items.get(characterIndex).idenName)
-        ideninfo.setText(items.get(characterIndex).ideninfo)
+        type.text = items.get(characterIndex).type
+        weapon.text = items.get(characterIndex).weapon
+        char_comment.text = items.get(characterIndex).char_comment
+        info.text = items.get(characterIndex).info
+        idenName.text = items.get(characterIndex).idenName
+        ideninfo.text = items.get(characterIndex).ideninfo
 
 
         //댓글 입력창
@@ -71,17 +71,16 @@ class DetailActivity : AppCompatActivity() {
         btn_input.setOnClickListener {
             val commentText = edt_text.text.toString().trim()
             if (commentText.isNotEmpty()){
-                val list = MyCommentsTempDatas().getComment(items.get(characterIndex).korName)
-                us_comment.setText("${edt_text.text.toString()}")
+                us_comment.text = "${edt_text.text.toString()}"
                 us_comment.visibility = View.VISIBLE
                 us_email.visibility = View.VISIBLE
                 us_time.visibility = View.VISIBLE
-                us_time.setText("${LocalDate.now()}")
+                //us_time.setText("${LocalDate.now()}")
+                us_time.text = "${LocalDate.now()}"
                 img_user.visibility = View.VISIBLE
                 //버튼 누르고 나면 EditText 텍스트 삭제
-                edt_text.setText(null)
+                edt_text.text = null
             }
         }
-
     }
 }
