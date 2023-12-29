@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +43,16 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
                     etpw.setText(receivePW)
                 }
             }
+
+        fun login(id: String, password: String): Boolean {
+            // TODO 로그인 성공시 아이디 저장
+            if (isValidLogin(id, password)) {
+                currentUserId = id
+                return true
+            }
+            return false
+        }
+
         //등록하러가기 버튼 누르면 회원가입 버튼으로 넘어감
         val btnSignUp = findViewById<AppCompatButton>(R.id.signin_toSignup)
         btnSignUp.setOnClickListener() {
@@ -52,21 +63,24 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
 
         val btnMain = findViewById<AppCompatButton>(R.id.signin_toMain)
         btnMain.setOnClickListener() {
-            startActivity(Intent(this, MainActivity::class.java))
+            if (etid.text.toString().isBlank() || etpw.text.toString().isBlank()) {
+                Toast.makeText(this, "이메일과 비밀번호를 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!isValidLogin(etid.text.toString(), etpw.text.toString())) {
+                Toast.makeText(this, "없는 회원 정보이거나 비밀번호가 옳지 않습니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
         }
-    }
 
-    fun login(id: String, password: String): Boolean {
-        // TODO 로그인 성공시 아이디 저장
-        if (isValidLogin(id, password)) {
-            currentUserId = id
-            return true
+
         }
-        return false
-    }
-
-    private fun isValidLogin(id: String, password: String): Boolean {
-        // TODO 로그인 유효성 검사
-        return true
+    private fun isValidLogin(Id: String, password: String): Boolean {
+        val user = datalist.find { it.userId == Id }
+        if (user == null) {
+            return false
+        }
+        return user.userPw == password
     }
 }

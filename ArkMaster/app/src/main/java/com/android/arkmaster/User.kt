@@ -7,6 +7,7 @@ import com.android.arkmaster.main.Character
 data class User(
     val name: String,
     val userId: String,  // userEmail -> userId
+    val userPw: String,
     val nickname: String,
     val representativeCharacter: Character? = null
 )
