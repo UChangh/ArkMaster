@@ -11,11 +11,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.databinding.ActivityMyPageBinding
-import java.time.LocalDate
+import com.android.arkmaster.main.CharacterManager
 
 class MyPageActivity:AppCompatActivity() {
     private lateinit var binding: ActivityMyPageBinding
-    // 깃허브 ㅅㅂ
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageBinding.inflate(layoutInflater)
@@ -24,17 +24,24 @@ class MyPageActivity:AppCompatActivity() {
 
         val mctd = MyCommentsTempDatas()
 
-        // E메일, 캐릭터명 = 모든 캐릭터의 댓글에서 해당 유저가 입력한 댓글의 캐릭터명, 댓글, 날짜를 가져오기(디테일 페이지)
-        mctd.dataset.add(Comments("E메일", "캐릭터명", "엄청 무서운 포즈 어흥", "${LocalDate.now()}"))
+        // 현재 로그인 중인 nickname, email을 받아서 출력
+        // E메일, 캐릭터명, 댓글, 날짜 = 모든 캐릭터의 댓글에서 해당 유저가 입력한 댓글의 캐릭터명, 댓글, 날짜를 가져오기(디테일 페이지)
+//        mctd.dataset.add(Comments("E메일", "캐릭터명", "엄청 무서운 포즈 어흥", "${LocalDate.now()}"))
+
         binding.myCommentsRecyclerView.adapter = MyCommentsRecyclerAdapter(mctd.dataset)
 
+        binding.tvUserName.text = "여기는 닉네임입니다."
+        binding.tvUserEmail.text = "여기는 이메일@입니다.com"
         // 스피너 팝업 띄우는 부분
         binding.tvSpinnerPopup.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             val inflater = this.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val view = inflater.inflate(R.layout.set_main_character_popup_layout, null)
             val spinners = view.findViewById<Spinner>(R.id.char_list_spinner)
-            val adapter = ArrayAdapter.createFromResource(this, R.array.characters_name, android.R.layout.simple_spinner_item)
+//            val adapter = ArrayAdapter.createFromResource(this, R.array.characters_name, android.R.layout.simple_spinner_item)
+            val charaNameLists = ArrayList<String>()
+            CharacterManager.getItems().let { it.forEach { name -> charaNameLists.add(name.korName) } }
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, charaNameLists)
 
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinners.adapter = adapter
@@ -44,10 +51,13 @@ class MyPageActivity:AppCompatActivity() {
                 .setView(view)
                 .create()
                 .show()
+
             spinners.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    val str = resources.getStringArray(R.array.characters_name)
-                    binding.tvSpinnerPopup.text = str[position]
+                    binding.tvSpinnerPopup.text = charaNameLists[position]
+                    CharacterManager.getItems().find { it.korName == charaNameLists[position] }?.let { image ->
+                        binding.mainCharImg.setImageResource(image.profileImage)
+                    }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {

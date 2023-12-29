@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.arkmaster.DetailActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.Value.characterId
+import com.android.arkmaster.mypage.MyPageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initView()
 
-//        startActivity(Intent(this,MyPageActivity::class.java))
+        startActivity(Intent(this, MyPageActivity::class.java))
     }
 
     private fun initView() {
