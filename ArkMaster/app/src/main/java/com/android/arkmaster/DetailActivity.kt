@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +15,7 @@ import com.android.arkmaster.main.CharacterManager
 import com.android.arkmaster.main.MainActivity
 import com.android.arkmaster.mypage.MyCommentsTempDatas
 import com.android.arkmaster.mypage.MyPageActivity
+import java.time.LocalDate
 import kotlin.math.log
 
 class DetailActivity : AppCompatActivity() {
@@ -44,15 +47,41 @@ class DetailActivity : AppCompatActivity() {
         idenName.setText(items.get(characterIndex).idenName)
         ideninfo.setText(items.get(characterIndex).ideninfo)
 
-        val btn_home = findViewById<Button>(R.id.btn_home)
-        btn_home.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+
+        //댓글 입력창
+        val edt_text = findViewById<EditText>(R.id.edt_text)
+        //댓글 입력 버튼
+        val btn_input = findViewById<Button>(R.id.btn_input)
+        //댓글 보이는 곳
+        val us_comment = findViewById<TextView>(R.id.us_comment)
+        //댓글 작성자
+        val us_email = findViewById<TextView>(R.id.us_email)
+        //댓글 작성자 이미지?
+        val img_user = findViewById<ImageView>(R.id.img_user)
+        //댓글 작성 시간
+        val us_time = findViewById<TextView>(R.id.us_time)
+
+        //초기에는 댓글 입력 요소 및 댓글 표시x
+        us_comment.visibility = View.GONE
+        us_email.visibility = View.GONE
+        us_time.visibility = View.GONE
+        img_user.visibility = View.GONE
+//        val list = MyCommentsTempDatas().getComment(items.get(characterIndex).korName)
+
+        btn_input.setOnClickListener {
+            val commentText = edt_text.text.toString().trim()
+            if (commentText.isNotEmpty()){
+                val list = MyCommentsTempDatas().getComment(items.get(characterIndex).korName)
+                us_comment.setText("${edt_text.text.toString()}")
+                us_comment.visibility = View.VISIBLE
+                us_email.visibility = View.VISIBLE
+                us_time.visibility = View.VISIBLE
+                us_time.setText("${LocalDate.now()}")
+                img_user.visibility = View.VISIBLE
+                //버튼 누르고 나면 EditText 텍스트 삭제
+                edt_text.setText(null)
+            }
         }
 
-        val btn_mypage = findViewById<Button>(R.id.btn_mypage)
-        btn_mypage.setOnClickListener {
-            val intent = Intent(this, MyPageActivity::class.java)
-        }
     }
 }
