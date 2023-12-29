@@ -91,6 +91,6 @@ class MyPageActivity:AppCompatActivity() {
 
     private fun sampleUserData() {  // User Data를 임시로 생성
 //        currentUserId = "root"
-        if(datalist.isEmpty()) datalist.add(User("Administrator","root","Admin"))
+        if(datalist.isEmpty()) datalist.add(User("Administrator","root","","Admin"))
     }
 }

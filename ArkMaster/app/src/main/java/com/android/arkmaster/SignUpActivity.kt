@@ -1,9 +1,11 @@
 package com.android.arkmaster
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView
@@ -12,6 +14,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
@@ -47,6 +50,7 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
 
 
 
+
         btnSignUp.setOnClickListener() {
             val password1 = et_password.text.toString()
             val password2 = et_password2.text.toString()
@@ -73,8 +77,6 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
                 return@setOnClickListener
             } else {
                 tv_errorName.visibility = View.INVISIBLE
-                val newName = User(userId = "Default userId", name = et_name.text.toString(), nickname = "Default Name")
-                datalist.add(newName)
             }
             //비밀번호
             if (et_password.text.isBlank()) {
@@ -117,8 +119,10 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
                 tv_errorNickname.visibility = View.INVISIBLE
             }
 
-            val newUser = User(userId = et_email.text.toString(), name = et_name.text.toString(), nickname = et_nickname.text.toString())
+            val newUser = User(userId = et_email.text.toString(), userPw = password1, name = et_name.text.toString(), nickname = et_nickname.text.toString())
             datalist.add(newUser)
+
+            Log.d("signupAcitivity", datalist.toString())
 
 
             val intent = Intent(this, SignInActivity::class.java).apply {
@@ -129,6 +133,7 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
             setResult(RESULT_OK, intent)
             if (!isFinishing) finish()
         }
+
     }
 
     fun makeToast(context: Context, message: String) {
@@ -143,6 +148,11 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
         return datalist.any { it.userId == userId }
     }
 
+    private val selectItemLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val selectedValue = result.data?.getStringExtra("selectedValue")
+            // TODO: 사용자가 선택한 값을 처리
+        }
+    }
 }
-
 //Test: test
