@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.arkmaster.DetailActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.Value.characterId
+import com.android.arkmaster.mypage.MyPageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initView()
 
-//        startActivity(Intent(this,MyPageActivity::class.java))
+        startActivity(Intent(this, MyPageActivity::class.java))
     }
 
     private fun initView() {

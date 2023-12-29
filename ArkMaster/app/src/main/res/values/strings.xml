@@ -51,17 +51,4 @@
     <string name="set_main_character_popup">대표 캐릭터 설정</string>
     <string name="text_search_hint">캐릭터 이름으로 검색해 보세요.</string>
 
-    <string-array name="characters_name">
-        <item>브레이커</item>>
-        <item>소서리스</item>
-        <item>스트라이커</item>
-        <item>리퍼</item>
-        <item>건슬링어</item>
-        <item>바드</item>
-        <item>서머너</item>
-        <item>블레이드</item>
-        <item>창술사</item>
-        <item>아르카나</item>
-        <item>홀리나이트</item>
-    </string-array>
 </resources>
