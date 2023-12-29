@@ -34,12 +34,13 @@ class MyPageActivity:AppCompatActivity() {
         binding.tvUserEmail.text = "여기는 이메일@입니다.com"
         // 스피너 팝업 띄우는 부분
         binding.tvSpinnerPopup.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
             val inflater = this.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val view = inflater.inflate(R.layout.set_main_character_popup_layout, null)
             val spinners = view.findViewById<Spinner>(R.id.char_list_spinner)
+
 //            val adapter = ArrayAdapter.createFromResource(this, R.array.characters_name, android.R.layout.simple_spinner_item)
             val charaNameLists = ArrayList<String>()
+
             CharacterManager.getItems().let { it.forEach { name -> charaNameLists.add(name.korName) } }
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, charaNameLists)
 
@@ -47,7 +48,9 @@ class MyPageActivity:AppCompatActivity() {
             spinners.adapter = adapter
             spinners.setSelection(0)
 
-            builder.setTitle(resources.getString(R.string.set_main_character_popup))
+            // dialog 만들기
+            val builder = AlertDialog.Builder(this)
+                .setTitle(resources.getString(R.string.set_main_character_popup))
                 .setView(view)
                 .create()
                 .show()
@@ -60,9 +63,7 @@ class MyPageActivity:AppCompatActivity() {
                     }
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
     }
