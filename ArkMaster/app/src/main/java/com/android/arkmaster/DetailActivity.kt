@@ -16,6 +16,7 @@ import com.android.arkmaster.mypage.MyPageActivity
 import kotlin.math.log
 
 class DetailActivity : AppCompatActivity() {
+    //test!!!!!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
