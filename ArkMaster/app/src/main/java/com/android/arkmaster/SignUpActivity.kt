@@ -144,3 +144,5 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
     }
 
 }
+
+//Test: test
