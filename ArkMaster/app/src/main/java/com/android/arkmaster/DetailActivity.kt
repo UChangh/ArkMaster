@@ -71,7 +71,6 @@ class DetailActivity : AppCompatActivity() {
         btn_input.setOnClickListener {
             val commentText = edt_text.text.toString().trim()
             if (commentText.isNotEmpty()){
-                val list = MyCommentsTempDatas().getComment(items.get(characterIndex).korName)
                 us_comment.text = "${edt_text.text.toString()}"
                 us_comment.visibility = View.VISIBLE
                 us_email.visibility = View.VISIBLE
@@ -83,6 +82,5 @@ class DetailActivity : AppCompatActivity() {
                 edt_text.text = null
             }
         }
-
     }
 }
