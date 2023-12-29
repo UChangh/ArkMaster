@@ -15,7 +15,7 @@ import java.time.LocalDate
 
 class MyPageActivity:AppCompatActivity() {
     private lateinit var binding: ActivityMyPageBinding
-
+    // 깃허브 ㅅㅂ
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageBinding.inflate(layoutInflater)
