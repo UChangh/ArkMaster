@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
 /*
-animation 
+animation TODO
  */
 abstract class AnimationActivity(
     private val transitionMode: TransitionMode = TransitionMode.NONE
