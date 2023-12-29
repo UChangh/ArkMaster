@@ -1,5 +1,6 @@
 package com.android.arkmaster
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
@@ -44,6 +46,7 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, item)
 
         spinner.adapter = adapter
+
 
 
 
@@ -143,6 +146,11 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
         return datalist.any { it.userId == userId }
     }
 
+    private val selectItemLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val selectedValue = result.data?.getStringExtra("selectedValue")
+            // TODO: 사용자가 선택한 값을 처리
+        }
+    }
 }
-
 //Test: test
