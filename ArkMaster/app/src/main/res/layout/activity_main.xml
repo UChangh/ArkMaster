@@ -6,26 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:visibility="gone"
-        android:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="@string/text_search_hint"
-            android:padding="5dp"
-            android:textSize="14sp" />
-    </RelativeLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcCharacter"
         android:layout_width="match_parent"
@@ -34,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnMoveHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relativeLayout" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMoveHome"

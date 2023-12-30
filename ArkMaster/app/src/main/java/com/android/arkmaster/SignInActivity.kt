@@ -26,6 +26,9 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
+        startActivity(Intent(this, MainActivity::class.java))
+
+
         //회원가입 페이지에서 ID, PW, Spinner 가지고 오기.
         val etid = findViewById<EditText>(R.id.signin_etid)
         val etpw = findViewById<EditText>(R.id.signin_etpw)
