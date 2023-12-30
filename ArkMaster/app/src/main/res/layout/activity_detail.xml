@@ -2,23 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".DetailActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".DetailActivity">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollViewDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -28,16 +27,15 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/profileImage"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="10dp"
+                    android:background="#353535"
                     android:padding="10dp"
                     android:src="@drawable/hawkeye"
-                    android:background="#353535"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/RoundOverlay"
-                    />
+                    app:shapeAppearanceOverlay="@style/RoundOverlay" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,11 +46,9 @@
                         android:id="@+id/korName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="25dp"
                         android:text="호크아이"
-                        android:textSize="24dp"
+                        android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/img_hawk"
                         app:layout_constraintStart_toEndOf="@+id/img_hawk"
@@ -62,8 +58,6 @@
                         android:id="@+id/engName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="HAWKEYE"
                         app:layout_constraintBottom_toBottomOf="@+id/img_hawk"
@@ -78,22 +72,20 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:text="계열"
+                    android:text="@string/text_character_type"
                     android:textColor="#144DFF"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/type"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="23dp"
                     android:text="헌터(남)"
                     android:textColor="#000000"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -103,58 +95,52 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:text="대표 무기"
+                    android:text="@string/text_chatacter_weapon"
                     android:textColor="#144DFF"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/weapon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="23dp"
                     android:text="활"
                     android:textColor="#000000"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/char_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="적을 꿰뚫어라, 신념의 화살이여!"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
                 android:text="호크아이는 민첩하게 움직이며 기계 활과 특수 화살로 적을 공격하는 명사수 입니다. 민첩한 이동기를 활용한 생존력이 우수하며 이를 바탕으로 비교적 긴 시간동안 안정적인 전투를 펼칠 수 있습니다. 또한 다양한 상태이상 스킬과 은신을 활용하여 적의 허점을 노리는 전투가 가능합니다." />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:text="아이덴티티"
+                android:text="@string/text_chatacter_identity"
                 android:textColor="#144DFF"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/idenName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="실버 호크" />
 
@@ -162,7 +148,6 @@
                 android:id="@+id/ideninfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="호크 게이지는 전투 중에 서서히 충전되고 호크 게이지를 모두 충전하면 실버호크를 소환할 수 있습니다. 실버호크는 주위의 적을 자동으로 공격하며 실버호크 전용 스킬을 사용해 다양한 적의 공격에 대처할 수 있습니다. 실버호크와 함께하는 전투는 장기전에서 유리한 상황을 만들어줍니다." />
 
@@ -170,93 +155,79 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="댓글"
-                android:textColor="#919191"/>
+                android:text="@string/my_comments"
+                android:textColor="@color/black" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/edt_text"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_weight="4"
                     android:ems="14"
-                    android:hint="나만의 플레이 팁을 알려주세요 :)"
+                    android:hint="@string/hint_input_play_tips"
                     android:inputType="text"
-                    android:text="" />
+                    android:padding="10dp"
+                    android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/btn_input"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
                     android:backgroundTint="#919191"
-                    android:text="등록" />
+                    android:text="@string/btn_register" />
             </LinearLayout>
 
-
-            <!--            <androidx.recyclerview.widget.RecyclerView-->
-            <!--                android:id="@+id/re_comments"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="195dp"-->
-            <!--                />-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/img_user"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:src="@drawable/hawkeye"
                     android:background="#353535"
+                    android:src="@drawable/hawkeye"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/RoundOverlay"
-                    />
+                    app:shapeAppearanceOverlay="@style/RoundOverlay" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/us_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="7.5dp"
-                        android:layout_marginTop="5dp"
-                        android:textStyle="bold"
-                        android:text="호크 유저"/>
+                        android:text="호크 유저"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/us_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="7.5dp"
                         android:layout_marginTop="5dp"
-                        android:text="낭만 가득한 호크, 함께 플레이 하실래여?"/>
+                        android:text="낭만 가득한 호크, 함께 플레이 하실래요?" />
 
                     <TextView
                         android:id="@+id/us_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="7.5dp"
                         android:layout_marginTop="5dp"
-                        android:textSize="10dp"
-                        android:text="현재시간"
-                        android:textColor="@color/dark_gray"/>
+                        android:text="현재 시간"
+                        android:textColor="@color/dark_gray" />
                 </LinearLayout>
             </LinearLayout>
-
-
 
         </LinearLayout>
 

@@ -1,31 +1,21 @@
 package com.android.arkmaster.main
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.android.arkmaster.R
 import com.android.arkmaster.mypage.MyCommentsTempDatas
 
-class RecyclerCharacterAdapter(private val items: List<Character>) :
+class RecyclerCharacterAdapter(
+    private var items: List<Character>,
+    private val context: Context
+) :
     RecyclerView.Adapter<RecyclerCharacterAdapter.ViewHolder>() {
-//    private val filteredCharacter = ArrayList<Character>()
-//
-//    init {
-//        filteredCharacter.addAll(items)
-//    }
-//
-//    override fun getFilter(): Filter {
-//        return CharacterFilter()
-//    }
-
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int)
     }
@@ -61,11 +51,13 @@ class RecyclerCharacterAdapter(private val items: List<Character>) :
             }
 
             tvName.text = item.korName
-            val commentsSize = "댓글 ${item.korName.getSize()}"
+            val commentsSize = "${context.getString(R.string.my_comments)} ${
+                MyCommentsTempDatas().getCommentSize(item.korName)
+            }"
             tvComment.text = commentsSize
 
             itemView.setOnClickListener {
-                val position = adapterPosition
+                val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     listener.onItemClick(itemView, position)
                 }
@@ -73,46 +65,10 @@ class RecyclerCharacterAdapter(private val items: List<Character>) :
         }
     }
 
-    // Filter
-//    inner class CharacterFilter : Filter() {
-//        override fun performFiltering(constraint: CharSequence?): FilterResults {
-//            val filterString = constraint.toString()
-//            val results = FilterResults()
-//
-//            // Copy the current filtered list to filter against
-//            val filterList: ArrayList<Character> = ArrayList<Character>()
-//
-//            return if (filterString.isBlank()) {
-//                // No filter constraint so return the original list
-//                results.values = items
-//                results.count = items.size
-//                results
-//            } else {
-//                // Filter the original data
-//                for (item in items) {
-//                    if (item.korName.contains(filterString)) {
-//                        filterList.add(item)
-//                    }
-//                }
-//
-//                results.values = filterList
-//                results.count = filterList.size
-//                results
-//            }
-//        }
-//        @SuppressLint("NotifyDataSetChanged")
-//        override fun publishResults(constraint: CharSequence?, results: FilterResults) {
-//            Log.d("CharacterFilter", "Filtered Character Count: ${results.count}")
-//            filteredCharacter.clear()
-//            filteredCharacter.addAll(results.values as ArrayList<Character>)
-//
-//            // Use runOnUiThread to make UI changes
-//            (itemView.context as AppCompatActivity).runOnUiThread {
-//                notifyDataSetChanged()
-//            }
-//        }
-//    }
-//
+    fun updateData(newItems: List<Character>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
 
-    private fun String.getSize() = MyCommentsTempDatas().getCommentSize(this)
 }
+
