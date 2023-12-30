@@ -2,15 +2,11 @@ package com.android.arkmaster
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.arkmaster.main.MainActivity
 
 class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
@@ -26,64 +22,48 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        startActivity(Intent(this, MainActivity::class.java))
+        // startActivity(Intent(this, MainActivity::class.java))
 
-
-        //회원가입 페이지에서 ID, PW, Spinner 가지고 오기.
-        val etid = findViewById<EditText>(R.id.signin_etid)
-        val etpw = findViewById<EditText>(R.id.signin_etpw)
-        val etspinner = findViewById<EditText>(R.id.signin_etspinner)
+        //회원 가입 화면 에서 ID, PW, Spinner 가지고 오기.
+        val etId = findViewById<EditText>(R.id.signin_etid)
+        val etPw = findViewById<EditText>(R.id.signin_etpw)
 
         activityResultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == RESULT_OK) {
-                    val receiveID = it.data?.getStringExtra("email") ?: ""
-                    val receivePW = it.data?.getStringExtra("PW") ?: ""
-                    val receiveSpinner = it.data?.getStringExtra("spinner") ?: ""
+                    val receiveID = it.data?.getStringExtra("email").orEmpty()
+                    val receivePW = it.data?.getStringExtra("PW").orEmpty()
 
-                    etspinner.setText(receiveSpinner)
-                    etid.setText(receiveID)
-                    etpw.setText(receivePW)
+                    etId.setText(receiveID)
+                    etPw.setText(receivePW)
                 }
             }
 
-        fun login(id: String, password: String): Boolean {
-            // TODO 로그인 성공시 아이디 저장
-            if (isValidLogin(id, password)) {
-                currentUserId = id
-                return true
-            }
-            return false
-        }
-
-        //등록하러가기 버튼 누르면 회원가입 버튼으로 넘어감
+        //등록 하러 가기 버튼 누르면 회원 가입 버튼 으로 넘어감
         val btnSignUp = findViewById<AppCompatButton>(R.id.signin_toSignup)
-        btnSignUp.setOnClickListener() {
+        btnSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             activityResultLauncher.launch(intent)
         }
 
-
         val btnMain = findViewById<AppCompatButton>(R.id.signin_toMain)
-        btnMain.setOnClickListener() {
-            if (etid.text.toString().isBlank() || etpw.text.toString().isBlank()) {
-                Toast.makeText(this, "이메일과 비밀번호를 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+        btnMain.setOnClickListener {
+            if (etId.text.toString().isBlank() || etPw.text.toString().isBlank()) {
+                Toast.makeText(this, getString(R.string.toast_check_login_info), Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
-            if (!isValidLogin(etid.text.toString(), etpw.text.toString())) {
-                Toast.makeText(this, "없는 회원 정보이거나 비밀번호가 옳지 않습니다.", Toast.LENGTH_SHORT).show()
+            if (!isValidLogin(etId.text.toString(), etPw.text.toString())) {
+                Toast.makeText(this, getString(R.string.toast_failed_login), Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 startActivity(Intent(this, MainActivity::class.java))
             }
         }
+    }
 
-
-        }
     private fun isValidLogin(Id: String, password: String): Boolean {
-        val user = datalist.find { it.userId == Id }
-        if (user == null) {
-            return false
-        }
+        val user = datalist.find { it.userId == Id } ?: return false
         return user.userPw == password
     }
 }

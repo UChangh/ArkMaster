@@ -39,6 +39,8 @@
     <string name="signin_topText">LostARK.GG</string>
     <string name="signin_loginText">Login</string>
     <string name="signin_email">Email</string>
+    <string name="toast_check_login_info">Please enter both your e-mail and password</string>
+    <string name="toast_failed_login">Your email or password does not match.</string>
 
     <string-array name="signup_spinnerarray">
         <item>up-to-date order</item>
