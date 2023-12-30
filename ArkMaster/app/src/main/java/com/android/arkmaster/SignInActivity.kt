@@ -59,12 +59,12 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
                     .show()
             } else {
                 startActivity(Intent(this, MainActivity::class.java))
+                currentUserId = etId.text.toString()    // 현재 로그인 된 ID를 cui에 저장
             }
         }
+        SampleUserData().sampleUserData()   // 샘플 데이터 삽입
     }
 
-            SampleUserData().sampleUserData()    // 샘플 데이터 삽입
-        }
     private fun isValidLogin(Id: String, password: String): Boolean {
         val user = datalist.find { it.userId == Id } ?: return false
         return user.userPw == password
