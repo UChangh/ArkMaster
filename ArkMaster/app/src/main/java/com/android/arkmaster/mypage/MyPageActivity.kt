@@ -29,8 +29,6 @@ class MyPageActivity:AppCompatActivity() {
 
         val mctd = MyCommentsTempDatas()
 
-        sampleUserData()    // datalist샘플 데이터 삽입
-
         // E메일, 캐릭터명, 댓글, 날짜 = 모든 캐릭터의 댓글에서 해당 유저가 입력한 댓글의 캐릭터명, 댓글, 날짜를 가져오기(디테일 페이지)
 //        mctd.dataset.add(Comments("E메일", "캐릭터명", "엄청 무서운 포즈 어흥", "${LocalDate.now()}"))
 
@@ -67,14 +65,12 @@ class MyPageActivity:AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                     binding.tvSpinnerPopup.text = charaNameLists[position]
                     CharacterManager.getItems(applicationContext).find { it.korName == charaNameLists[position] }?.let { image ->
-                        binding.mainCharImg.setImageResource(image.profileImage)
                         datalist.find { it.userId == currentUserId }.let {
+                            binding.mainCharImg.setImageResource(image.profileImage)
                             it?.representativeCharacter = image.profileImage
                         }
                     }
-
                 }
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
@@ -87,10 +83,5 @@ class MyPageActivity:AppCompatActivity() {
 
     private fun toast(str:String) {
         Toast.makeText(this,str,Toast.LENGTH_SHORT).show()
-    }
-
-    private fun sampleUserData() {  // User Data를 임시로 생성
-//        currentUserId = "root"
-        if(datalist.isEmpty()) datalist.add(User("Administrator","root","","Admin"))
     }
 }

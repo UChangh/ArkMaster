@@ -8,6 +8,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
 import com.android.arkmaster.main.MainActivity
+import com.android.arkmaster.mypage.SampleUserData
 
 class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
 
@@ -62,6 +63,8 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
         }
     }
 
+            SampleUserData().sampleUserData()    // 샘플 데이터 삽입
+        }
     private fun isValidLogin(Id: String, password: String): Boolean {
         val user = datalist.find { it.userId == Id } ?: return false
         return user.userPw == password
