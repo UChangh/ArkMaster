@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.arkmaster.main.MainActivity
+import com.android.arkmaster.mypage.SampleUserData
 
 class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
 
@@ -75,6 +76,7 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
         }
 
 
+            SampleUserData().sampleUserData()    // 샘플 데이터 삽입
         }
     private fun isValidLogin(Id: String, password: String): Boolean {
         val user = datalist.find { it.userId == Id }
