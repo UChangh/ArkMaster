@@ -47,7 +47,7 @@ class MyPageActivity:AppCompatActivity() {
 //            val adapter = ArrayAdapter.createFromResource(this, R.array.characters_name, android.R.layout.simple_spinner_item)
             val charaNameLists = ArrayList<String>()
 
-            CharacterManager.getItems().let { it.forEach { name -> charaNameLists.add(name.korName) } }
+            CharacterManager.getItems(applicationContext).let { it.forEach { name -> charaNameLists.add(name.korName) } }
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, charaNameLists)
 
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -66,7 +66,7 @@ class MyPageActivity:AppCompatActivity() {
             spinners.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                     binding.tvSpinnerPopup.text = charaNameLists[position]
-                    CharacterManager.getItems().find { it.korName == charaNameLists[position] }?.let { image ->
+                    CharacterManager.getItems(applicationContext).find { it.korName == charaNameLists[position] }?.let { image ->
                         binding.mainCharImg.setImageResource(image.profileImage)
                         datalist.find { it.userId == currentUserId }.let {
                             it?.representativeCharacter = image.profileImage
@@ -91,6 +91,6 @@ class MyPageActivity:AppCompatActivity() {
 
     private fun sampleUserData() {  // User Data를 임시로 생성
 //        currentUserId = "root"
-        if(datalist.isEmpty()) datalist.add(User("Administrator","root","Admin"))
+        if(datalist.isEmpty()) datalist.add(User("Administrator","root","","Admin"))
     }
 }

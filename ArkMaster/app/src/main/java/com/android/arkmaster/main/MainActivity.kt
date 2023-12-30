@@ -1,12 +1,10 @@
 package com.android.arkmaster.main
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
@@ -16,54 +14,61 @@ import com.android.arkmaster.DetailActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.Value.characterId
 import com.android.arkmaster.mypage.MyPageActivity
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var configuration: Configuration
+    private lateinit var adapter: RecyclerCharacterAdapter
 
     private val rcCharacter: RecyclerView by lazy { findViewById(R.id.rcCharacter) }
-//    private val searchView: SearchView by lazy { findViewById(R.id.searchView) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
 
+        configuration = resources.configuration
+
+        val buttonKorea = findViewById<Button>(R.id.btnMoveHome)
+        buttonKorea.setOnClickListener {
+            configuration.setLocale(Locale.KOREAN)
+            resources.updateConfiguration(configuration, resources.displayMetrics)
+            updateRecyclerViewData()
+            recreate()
+        }
+
+        val buttonUS = findViewById<Button>(R.id.btnMoveMyPage)
+        buttonUS.setOnClickListener {
+            configuration.setLocale(Locale.ENGLISH)
+            resources.updateConfiguration(configuration, resources.displayMetrics)
+
+            updateRecyclerViewData()
+            recreate()
+        }
+
         findViewById<Button>(R.id.btnMoveMyPage).setOnClickListener {
             startActivity(Intent(this, MyPageActivity::class.java))
         }
     }
 
-    private fun initView() {
-        val items = CharacterManager.getItems().sortedBy { it.korName }
+    private fun updateRecyclerViewData() {
+        val newItems = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
+        adapter.updateData(newItems)
+    }
 
-        val adapter = RecyclerCharacterAdapter(items)
+    private fun initView() {
+        val items = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
+
+        adapter = RecyclerCharacterAdapter(items, applicationContext)
         rcCharacter.adapter = adapter
         rcCharacter.layoutManager = GridLayoutManager(this, 3)
 
-//        val searchViewTextListener: SearchView.OnQueryTextListener =
-//            object : SearchView.OnQueryTextListener {
-//                override fun onQueryTextSubmit(s: String): Boolean {
-//                    return false
-//                }
-//
-//                override fun onQueryTextChange(s: String): Boolean {
-//                    Log.d("MainActivity", "QueryTextChange: $s")
-//                    adapter.filter.filter(s)
-//                    return false
-//                }
-//            }
-//
-//        searchView.setOnQueryTextListener(searchViewTextListener)
-
         adapter.setItemClickListener(object : RecyclerCharacterAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                showToast("$position")
+                // Toast.makeText(applicationContext, "$position", Toast.LENGTH_SHORT).show()
                 startDetailActivity(view, position)
             }
         })
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun startDetailActivity(view: View, position: Int) {

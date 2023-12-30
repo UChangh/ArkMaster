@@ -48,7 +48,6 @@ abstract class AnimationActivity(
                 Activity.OVERRIDE_TRANSITION_OPEN, enterResId, exitResId
             )
         } else {
-            @Suppress("DEPRECATION")
             overridePendingTransition(enterResId, exitResId)
         }
     }

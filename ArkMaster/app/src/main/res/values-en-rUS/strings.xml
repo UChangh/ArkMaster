@@ -1,0 +1,163 @@
+<resources>
+    <string name="app_name">Ark Master</string>
+    <string name="signup_toptap">Sign In</string>
+    <string name="signup_emailHint">Please enter your e-mail.</string>
+    <string name="signup_nickname">nickname</string>
+    <string name="signup_nicnameHint">Please enter a nickname.</string>
+    <string name="signup_erroremail">This email already exists.</string>
+    <string name="signup_errornickname">Nickname already exists.</string>
+    <string name="signup_name">Name</string>
+    <string name="signup_nameHint">Please enter your name</string>
+    <string name="signup_errorname">Please enter your name</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_passwordHint">Please enter your Password.</string>
+    <string name="signup_errorpassword">Please enter your Password.</string>
+    <string name="signup_checkpassword">Check your password </string>
+    <string name="signup_checkpasswordHint">Please enter the same password.</string>
+    <string name="signup_errorcheckpassword">The password is different.</string>
+    <string name="signup_buttonText">Sign Up</string>
+    <string name="signup_pwlimit">8–16 characters including lowercase, uppercase, and special characters.</string>
+    <string name="home_kr">Home</string>
+    <string name="my_page_kr">My Page</string>
+    <string name="user_name">Nickname</string>
+    <string name="user_email">E-Mail</string>
+    <string name="main_character_image_setting">Settings</string>
+    <string name="my_comments">Comments</string>
+    <string name="button_my_page">My Page</string>
+    <string name="button_home">Home</string>
+    <string name="transition_image">transImage</string>
+    <string name="transition_name">transName</string>
+    <string name="set_main_character_popup">Representative Character Settings.</string>
+    <string name="text_search_hint">Search by character name.</string>
+    <string name="btn_register">Register</string>
+    <string name="text_character_type">Type</string>
+    <string name="text_chatacter_weapon">Weapon</string>
+    <string name="text_chatacter_identity">Identity</string>
+    <string name="hint_input_play_tips">Please give me your own play tips.</string>
+    <string name="signin_next">Going to see the target</string>
+    <string name="signin_toSignup">Going to register as a hero</string>
+    <string name="signin_topText">LostARK.GG</string>
+    <string name="signin_loginText">Login</string>
+    <string name="signin_email">Email</string>
+    <string name="toast_check_login_info">Please enter both your e-mail and password</string>
+    <string name="toast_failed_login">Your email or password does not match.</string>
+
+    <string-array name="signup_spinnerarray">
+        <item>up-to-date order</item>
+        <item>Like order</item>
+        <item>Review order</item>
+    </string-array>
+
+
+    <string-array name="character_names">
+        <item>Breaker</item>
+        <item>Careless</item>
+        <item>striker</item>
+        <item>Ripper</item>
+        <item>Gunslinger</item>
+        <item>bad</item>
+        <item>Summer</item>
+        <item>blade</item>
+        <item>Creator</item>
+        <item>Arcana</item>
+        <item>Hollywood</item>
+    </string-array>
+
+    <string-array name="character_names_english">
+        <item>Breaker</item>>
+        <item>Sorceress</item>
+        <item>Striker</item>
+        <item>Reaper</item>
+        <item>Gunslinger</item>
+        <item>Bard</item>
+        <item>Summoner</item>
+        <item>Blade</item>
+        <item>Lance Master</item>
+        <item>Arcana</item>
+        <item>Holyknight</item>
+    </string-array>
+
+    <string-array name="character_types">
+        <item>Mindless</item>
+        <item>Wizard</item>
+        <item>Mindless</item>
+        <item>Assassination</item>
+        <item>Hunter (female)</item>
+        <item>Wizard</item>
+        <item>Wizard</item>
+        <item>Assassination</item>
+        <item>Mindless</item>
+        <item>Wizard</item>
+        <item>Warrior</item>
+    </string-array>
+
+    <string-array name="character_comments">
+        <item>I don\'t miss holding it in my hand, not even a thousand!</item>
+        <item>Those who realize the providence of nature will rule the battlefield!</item>
+        <item>Only moving toward the pole!</item>
+        <item>Shadows don\'t make sounds.</item>
+        <item>In front of guns, everyone is honest.</item>
+        <item> This beautiful melody is the prelude to the battlefield that will turn into a sea of blood.</item>
+        <item>Spirits, take down enemies that threaten the world!</item>
+        <item>The sword-wielding of chaos, restraining the inherent demonic nature!</item>
+        <item>Be a battlefield window, annihilate the enemy!</item>
+        <item>The fate of this world is already in my card!</item>
+        <item>Guardian of light, judge the world in the name of God!</item>
+    </string-array>
+
+    <string-array name="character_descriptions">
+        <item>Breaker is a class with excellent maneuverability and a powerful shot. You\'re free to choose your attacking position, and you can expect a lot of combos to fight hard.</item>
+        <item>Sourless is a class that deals with powerful magic based on three elements. Sourless can easily handle multiple enemies using wide-area magic, and it can also cause high damage to powerful enemies with casting magic. If you take advantage of the identity you get by acquiring mysterious horsepower gauges, you can become a hero dominating the battlefield.</item>
+        <item>Striker is a martial arts class that pushes enemies like a gale. With fast movements and a variety of physical skills, you can hit enemies in an instant and continue a colorful aerial combo, and you can also use powerful elemental skills to turn the battlefield around.</item>
+        <item>Reaper is an assassin class that uses large numbers and shadow skills. Reaper uses its sleek movements to attack enemies, giving them fear. You can use various poisons to inflict lasting damage, or you can secretly move behind enemies through hiding and make powerful attacks.</item>
+        <item>Gunslinger is a long-distance class that uses three firearms to move quickly and engage in stylish combat. Depending on your distance from your target, or the range you want to attack, you can choose the right stance to create the most effective combat with a double handgun, shotgun, and rifle.</item>
+        <item>bad is a long-range supportive class that uses sacred harp to attack enemies or support allies. You can attack enemies with sharp tones, heal allies with beautiful cadences, and at a party, you can help allies from the back or use various buffs to support allies rather than spearhead. The attack is somewhat low, but the ability to support allies is very good, so it\'s a necessary class at a party.</item>
+        <item>Summer is a long-distance class that develops combat with various spirits that can act as auxiliary dealers or tankers. Due to their low physical strength and defense, it is recommended to fight over a certain distance, and if you are caught at a distance by your enemies, it can be fatal, but if you properly combine the various magic skills and spirits of Summerner, a threatening situation won\'t even be allowed.</item>
+        <item>Blade is an assassin using a total of three swords, a double sword and a long sword. He always maintains his calm reason, and he attacks his enemies quickly and with the power of chaos with his sleek double sword and heavy long sword. In particular, a linked attack using double and long sword fires a breathless attack to subdue the enemy.</item>
+        <item>Changsulist is a class that can change the stance according to the situation. You can use a rampant stance that can wipe out enemies located around you using a variant window, and a concentrated stance that can cause instantaneous high damage with a sharp window to subdue enemies on the battlefield in a single stroke.</item>
+        <item>Arcana is a wizard class that is easily exposed to danger due to its weak physical strength and defense, while showing a strong performance in mid-range battles with flashy and fast movements, and it is a class that can violate opponents with dynamic battles. One skill shot is not powerful, but it can give enemies amplified damage by building a stack effect with the magic of the card and using the Luin skill to explode the stack effect.</item>
+        <item>Hollinite is a supportive class that uses the sword of faith and the power of faith. You can use Bible-based Divinity Skills and Buffs to support your allies from the back or take the lead on the battlefield through sword-based Punishment Skills.</item>
+    </string-array>
+
+    <string-array name="character_weapons">
+        <item>Heavy gauntlet</item>
+        <item>Long staff</item>
+        <item>Elemental Gauntlet</item>
+        <item>large</item>
+        <item>shot gun, double handgun, rifle</item>
+        <item>Ryanne Half</item>
+        <item>Magic staff</item>
+        <item>Sword</item>
+        <item>spear</item>
+        <item>Magic Deck</item>
+        <item>One-handed sword</item>
+    </string-array>
+
+    <string-array name="character_energy_types">
+        <item>Energy/Shock/Toozy Energy</item>
+        <item>Magic release/blinking</item>
+        <item>Elemental bubble</item>
+        <item>Persona</item>
+        <item>Quick Stance</item>
+        <item>serenade</item>
+        <item>Summoning an ancient decree.</item>
+        <item>Blade Arts</item>
+        <item>Dual Stance</item>
+        <item>card deck</item>
+        <item>Faith gauge</item>
+    </string-array>
+
+    <string-array name="character_special_skills">
+        <item>Energy and shock energy used by the Force/Shock/Toozy Energy Breaker take a form that complements each other. When you use the Energy Skill, the Impact Energy increases instead of the Energy Gauge decreases, and when you use the Impact Skill, the Energy Energy increases instead of the Impact Energy decreases. When you hit your enemies on the attack, you can acquire the Fighting Energy. When you use the Fighting Energy, your stance changes and you are temporarily in a \'King of Power\' state, allowing you to engage in more speedy battles.</item>
+        <item>Sosoris can acquire a mysterious horsepower gauge and use horsepower release and flashing whenever it hits a skill at enemies. The horsepower release skill is a useful skill that can enhance elemental magic and reduce casting time, while the flashing skill is a skill that can even penetrate boss monsters, which can move quickly to a certain point.</item>
+        <item>Striker can acquire a special gauge called the Elemental Bubble by attacking the enemy while equipped with the Elemental Gauntlet. You can create up to three Elemental Bubbles, and you can use the Oh skill by consuming the Elemental Bubble. The Oh skill has a different number of bubbles used depending on the performance.</item>
+        <item>Fill the dark gauge and you can summon the same self-immolation persona to hide. The longer the hiding time lasts, the stronger the attack is possible. Also, if you continue the attack without using the persona, you can fill the chaos gauge. When the chaos gauge is full, you will be in chaos, allowing you to use faster and more deadly attacks.</item>
+        <item>Gunslinger is able to fight by freely changing three firearms depending on the situation. Skill corresponding to each weapon exists. Handguns can attack a wide range quickly and splendidly, shotguns provide powerful damage to close enemies, and rifle is suitable for keeping distant enemies in check or taking a finishing hit.</item>
+        <item>Serenade Bard has a special skill called the Serenade Skill, which requires a Serenade Bubble. There are up to three Serenade Bubbles, and you can use the Serenade Skill by consuming one Serenade Bubble. The Serenade Skill is used to increase party member\'s attack power or to restore physical strength.</item>
+        <item>Ancient Spirit Summoner can summon huge, powerful ancient spirits. When ancient energy is gathered, the beads of a spirit are produced, and depending on their consumption, they can summon more powerful ancient spirits. Take control of the battle by summoning powerful ancient spirits.</item>
+        <item>Blades can gain Blade of Gauges when attacking and certain skill hits, and enter Blade Arts when more than one Blade of Gauges is filled. With Blade Arts, the Blade of Gauges increase attack speed, movement speed, and damage to enemies, and you can use the powerful Blade Burst skill only available during Blade Arts.</item>
+        <item>With the freedom to change two stances, a magician can achieve up to three levels of dual gauges by maintaining a stance or attacking enemies. When changing a stance, the magician consumes all of the dual gauges, and depending on the level of gauge he or she has, he or she can achieve a powerful effect.</item>
+        <item>Arcana can draw a single card at random within a deck of cards when the card gauge is full. There are cards with various effects inside the deck of cards, but no one knows which cards will be chosen, so the fate of the battlefield can be reversed depending on what cards are drawn.</item>
+        <item>Holynites can use the faith gauge that can be acquired during battle to strengthen their swords or increase the combat capabilities of their party members. Using the God Enforcer skill, you can increase all attack ranges and damage with your sword by focusing the power of your faith on your sword, and using the God\'s Ora skill, you can spread your Ora around you and increase the combat capabilities of your party members except yourself.</item>
+    </string-array>
+</resources>
