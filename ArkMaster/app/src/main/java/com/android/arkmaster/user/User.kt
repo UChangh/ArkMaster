@@ -6,10 +6,7 @@ data class User(
     val userId: String,
     val userPw: String,
     val nickname: String,
-    var representativeCharacter: Int? = null
+    var representativeCharacter: Int = 0
 )
-
-val userList = mutableListOf<User>()
-
 
 

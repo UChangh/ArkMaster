@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.arkmaster.DetailActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.Value.characterId
+import com.android.arkmaster.main.CharacterManager.getCharacters
 import com.android.arkmaster.mypage.MyPageActivity
 import java.util.Locale
 import kotlin.math.log
@@ -40,9 +41,13 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateRecyclerViewData()
+    }
 
     private fun updateRecyclerViewData() {
-        val newItems = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
+        val newItems = getCharacters().sortedBy { it.korName }
         adapter.updateData(newItems)
         adapter.notifyDataSetChanged()
     }
@@ -98,13 +103,11 @@ class MainActivity : AppCompatActivity() {
         configuration.setLocale(locale)
         resources.updateConfiguration(configuration, resources.displayMetrics)
         recreate()
-
-        updateRecyclerViewData()
     }
 
 
     private fun setCharacterAdapter() {
-        val items = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
+        val items = getCharacters().sortedBy { it.korName }
 
         adapter = RecyclerCharacterAdapter(items, applicationContext)
         rcCharacter.adapter = adapter
@@ -139,3 +142,4 @@ class MainActivity : AppCompatActivity() {
         return listOf(characterPair, characterNamePair)
     }
 }
+

@@ -3,12 +3,10 @@ package com.android.arkmaster.main
 import android.content.Context
 import com.android.arkmaster.R
 
-object CharacterManager {
-    private val characters = ArrayList<Character>()
+object CharacterRepository {
+    private var characters = ArrayList<Character>()
 
     fun Context.getCharacters(): ArrayList<Character> {
-        characters.clear()
-
         val characterImages = initializeCharacterImages()
         val characterNames = resources.getStringArray(R.array.character_names)
         val characterNamesEnglish =
@@ -58,5 +56,4 @@ object CharacterManager {
     fun findCharacterName(id: Int): String {
         return characters.find { it.id == id }?.korName ?: ""
     }
-
 }

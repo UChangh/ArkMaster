@@ -11,11 +11,12 @@ import com.android.arkmaster.AnimationActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.main.MainActivity
 import com.android.arkmaster.mypage.SampleUserData
+import com.android.arkmaster.user.UserManager.userList
 
 class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
 
     companion object {
-        var currentUserId: String? = null
+        var currentUserId: String = ""
     }
 
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>

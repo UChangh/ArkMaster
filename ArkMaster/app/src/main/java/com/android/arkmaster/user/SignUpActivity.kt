@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.arkmaster.AnimationActivity
 import com.android.arkmaster.R
+import com.android.arkmaster.user.UserManager.userList
 
 class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
     override fun onCreate(savedInstanceState: Bundle?) {

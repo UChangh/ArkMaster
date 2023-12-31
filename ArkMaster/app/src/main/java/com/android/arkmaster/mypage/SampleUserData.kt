@@ -2,7 +2,7 @@ package com.android.arkmaster.mypage
 
 import com.android.arkmaster.R
 import com.android.arkmaster.user.User
-import com.android.arkmaster.user.userList
+import com.android.arkmaster.user.UserManager.userList
 
 class SampleUserData {
     fun sampleUserData() {  // User타입의 샘플 데이터 생성
