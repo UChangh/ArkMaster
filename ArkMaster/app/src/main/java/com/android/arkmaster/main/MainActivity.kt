@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.arkmaster.DetailActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.Value.characterId
+import com.android.arkmaster.mypage.MyPageActivity
 import java.util.Locale
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var configuration: Configuration
@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
 
             updateRecyclerViewData()
             recreate()
+        }
+
+        findViewById<Button>(R.id.btnMoveMyPage).setOnClickListener {
+            startActivity(Intent(this, MyPageActivity::class.java))
         }
     }
 

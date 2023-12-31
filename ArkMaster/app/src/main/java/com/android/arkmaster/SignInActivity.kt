@@ -8,6 +8,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
 import com.android.arkmaster.main.MainActivity
+import com.android.arkmaster.mypage.SampleUserData
 
 class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
 
@@ -58,8 +59,10 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
                     .show()
             } else {
                 startActivity(Intent(this, MainActivity::class.java))
+                currentUserId = etId.text.toString()    // 현재 로그인 된 ID를 cui에 저장
             }
         }
+        SampleUserData().sampleUserData()   // 샘플 데이터 삽입
     }
 
     private fun isValidLogin(Id: String, password: String): Boolean {
