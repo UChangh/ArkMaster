@@ -1,4 +1,4 @@
-package com.android.arkmaster
+package com.android.arkmaster.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
+import com.android.arkmaster.AnimationActivity
+import com.android.arkmaster.R
 import com.android.arkmaster.main.MainActivity
 import com.android.arkmaster.mypage.SampleUserData
 
@@ -22,8 +24,6 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-
-        // startActivity(Intent(this, MainActivity::class.java))
 
         //회원 가입 화면 에서 ID, PW, Spinner 가지고 오기.
         val etId = findViewById<EditText>(R.id.signin_etid)
@@ -66,7 +66,7 @@ class SignInActivity : AnimationActivity(TransitionMode.HORIZON) {
     }
 
     private fun isValidLogin(Id: String, password: String): Boolean {
-        val user = datalist.find { it.userId == Id } ?: return false
+        val user = userList.find { it.userId == Id } ?: return false
         return user.userPw == password
     }
 }

@@ -41,6 +41,8 @@
     <string name="signin_email">Email</string>
     <string name="toast_check_login_info">이메일과 비밀번호를 모두 입력해주세요.</string>
     <string name="toast_failed_login">이메일 또는 비밀번호가 일치하지 않습니다.</string>
+    <string name="locale_korean">한국어</string>
+    <string name="locale_english">영어</string>
 
     <string-array name="signup_spinnerarray">
         <item>최신순</item>

@@ -3,8 +3,12 @@ package com.android.arkmaster.main
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
@@ -15,35 +19,68 @@ import com.android.arkmaster.R
 import com.android.arkmaster.Value.characterId
 import com.android.arkmaster.mypage.MyPageActivity
 import java.util.Locale
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var configuration: Configuration
     private lateinit var adapter: RecyclerCharacterAdapter
 
-    private val rcCharacter: RecyclerView by lazy { findViewById(R.id.rcCharacter) }
+    private val rcCharacter: RecyclerView by lazy {
+        findViewById(R.id.rcCharacter)
+    }
+
+    private val spinnerLocale: Spinner by lazy {
+        findViewById(R.id.spLocale)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initView()
-
         configuration = resources.configuration
+        initView()
+    }
 
-        val buttonKorea = findViewById<Button>(R.id.btnMoveHome)
-        buttonKorea.setOnClickListener {
-            configuration.setLocale(Locale.KOREAN)
-            resources.updateConfiguration(configuration, resources.displayMetrics)
-            updateRecyclerViewData()
-            recreate()
-        }
 
-        val buttonUS = findViewById<Button>(R.id.btnMoveMyPage)
-        buttonUS.setOnClickListener {
-            configuration.setLocale(Locale.ENGLISH)
-            resources.updateConfiguration(configuration, resources.displayMetrics)
+    private fun updateRecyclerViewData() {
+        val newItems = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
+        adapter.updateData(newItems)
+        adapter.notifyDataSetChanged()
+    }
 
-            updateRecyclerViewData()
-            recreate()
+    private fun setLocaleChanger() {
+        val locales = listOf(
+            getString(R.string.locale_korean),
+            getString(R.string.locale_english)
+        )
+
+        spinnerLocale.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            locales
+        )
+
+        spinnerLocale.setSelection(0, false)
+
+        spinnerLocale.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedLocale = when (position) {
+                    0 -> Locale.KOREAN
+                    1 -> Locale.ENGLISH
+                    else -> return
+                }
+
+                if (selectedLocale != configuration.locale) {
+                    setLocale(selectedLocale)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
         }
 
         findViewById<Button>(R.id.btnMoveMyPage).setOnClickListener {
@@ -51,12 +88,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateRecyclerViewData() {
-        val newItems = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
-        adapter.updateData(newItems)
+    private fun initView() {
+        setCharacterAdapter()
+
+        setLocaleChanger()
     }
 
-    private fun initView() {
+    private fun setLocale(locale: Locale) {
+        configuration.setLocale(locale)
+        resources.updateConfiguration(configuration, resources.displayMetrics)
+        recreate()
+
+        updateRecyclerViewData()
+    }
+
+
+    private fun setCharacterAdapter() {
         val items = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
 
         adapter = RecyclerCharacterAdapter(items, applicationContext)
@@ -65,7 +112,6 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setItemClickListener(object : RecyclerCharacterAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                // Toast.makeText(applicationContext, "$position", Toast.LENGTH_SHORT).show()
                 startDetailActivity(view, position)
             }
         })

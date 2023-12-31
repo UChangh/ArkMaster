@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.android.arkmaster.Value.characterId
 import com.android.arkmaster.main.CharacterManager
 import java.time.LocalDate
@@ -37,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
 
         val characterIndex = intent.getIntExtra(characterId, -1)
         if (characterIndex == -1) {
-            return
+            finish()
         }
 
         korName.text = items[characterIndex].korName
@@ -57,6 +56,8 @@ class DetailActivity : AppCompatActivity() {
         userCommentTime.visibility = View.GONE
         userCharacterImage.visibility = View.GONE
 
+        // add
+
         btnInput.setOnClickListener {
             val commentText = editText.text.toString().trim()
             if (commentText.isNotEmpty()) {
@@ -70,5 +71,6 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
+
 }
 

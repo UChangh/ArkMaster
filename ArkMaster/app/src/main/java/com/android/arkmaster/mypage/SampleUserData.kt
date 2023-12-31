@@ -1,17 +1,19 @@
 package com.android.arkmaster.mypage
 
-import com.android.arkmaster.User
-import com.android.arkmaster.datalist
+import com.android.arkmaster.R
+import com.android.arkmaster.user.User
+import com.android.arkmaster.user.userList
 
 class SampleUserData {
     fun sampleUserData() {  // User타입의 샘플 데이터 생성
-        if(datalist.isEmpty()) {
-            datalist.add(
+        if (userList.isEmpty()) {
+            userList.add(
                 User(
                     "Administrator",
                     "root",
                     "1234",
-                    "Admin"
+                    "Admin",
+                    6
                 )
             )
         }

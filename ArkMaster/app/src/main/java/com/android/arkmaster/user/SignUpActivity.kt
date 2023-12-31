@@ -1,10 +1,9 @@
-package com.android.arkmaster
+package com.android.arkmaster.user
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -13,6 +12,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.android.arkmaster.AnimationActivity
+import com.android.arkmaster.R
 
 class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,7 +110,7 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
             }
 
             val newUser = User(userId = etEmail.text.toString() + spinner.selectedItem, userPw = password1, name = etName.text.toString(), nickname = etNickName.text.toString())
-            datalist.add(newUser)
+            userList.add(newUser)
 
             val intent = Intent(this, SignInActivity::class.java).apply {
                 putExtra("email", etEmail.text.toString() + spinner.selectedItem)
@@ -125,11 +126,11 @@ class SignUpActivity : AnimationActivity(TransitionMode.HORIZON) {
     }
 
     private fun isNickNameUsed(nickname: String): Boolean {
-        return datalist.any { it.nickname == nickname }
+        return userList.any { it.nickname == nickname }
     }
     //이메일 중복
     private fun isUserEmailUsed(userId: String): Boolean {
-        return datalist.any { it.userId == userId }
+        return userList.any { it.userId == userId }
     }
 
     private val selectItemLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

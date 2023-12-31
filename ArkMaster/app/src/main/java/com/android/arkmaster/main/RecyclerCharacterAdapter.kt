@@ -10,12 +10,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.arkmaster.R
 import com.android.arkmaster.mypage.MyCommentsTempDatas
+import java.util.Locale
 
 class RecyclerCharacterAdapter(
     private var items: List<Character>,
     private val context: Context
-) :
-    RecyclerView.Adapter<RecyclerCharacterAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerCharacterAdapter.ViewHolder>() {
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int)
     }
@@ -54,6 +54,7 @@ class RecyclerCharacterAdapter(
             val commentsSize = "${context.getString(R.string.my_comments)} ${
                 MyCommentsTempDatas().getCommentSize(item.korName)
             }"
+            Log.d("RecyclerCharacterAdapter", commentsSize)
             tvComment.text = commentsSize
 
             itemView.setOnClickListener {
@@ -67,6 +68,8 @@ class RecyclerCharacterAdapter(
 
     fun updateData(newItems: List<Character>) {
         items = newItems
+        Log.d("RecyclerCharacterAdapter", "${items[0].weapon}")
+
         notifyDataSetChanged()
     }
 

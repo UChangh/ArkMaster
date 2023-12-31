@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ArkMaster" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/black</item>
         <item name="android:windowActivityTransitions">true</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
