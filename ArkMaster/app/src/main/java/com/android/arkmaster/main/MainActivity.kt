@@ -1,9 +1,11 @@
 package com.android.arkmaster.main
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -20,7 +22,6 @@ import com.android.arkmaster.Value.characterId
 import com.android.arkmaster.main.CharacterManager.getCharacters
 import com.android.arkmaster.mypage.MyPageActivity
 import java.util.Locale
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var configuration: Configuration
@@ -105,11 +106,10 @@ class MainActivity : AppCompatActivity() {
         recreate()
     }
 
-
     private fun setCharacterAdapter() {
         val items = getCharacters().sortedBy { it.korName }
 
-        adapter = RecyclerCharacterAdapter(items, applicationContext)
+        adapter = RecyclerCharacterAdapter(items)
         rcCharacter.adapter = adapter
         rcCharacter.layoutManager = GridLayoutManager(this, 3)
 

@@ -48,6 +48,10 @@ object MyCommentsTempDatas {
         return dataset.filter { it.characterId == id }
     }
 
+    fun getCharacterComment(email: String): MutableList<Comments> {
+        return dataset.filter { it.userEmail == email }.toMutableList()
+    }
+
     fun addComment(comment: Comments) {
         dataset.add(comment)
     }

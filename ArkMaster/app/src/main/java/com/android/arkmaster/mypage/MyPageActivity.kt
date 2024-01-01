@@ -8,14 +8,16 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.android.arkmaster.AnimationActivity
 import com.android.arkmaster.R
 import com.android.arkmaster.databinding.ActivityMyPageBinding
 import com.android.arkmaster.main.CharacterManager.getCharacters
 import com.android.arkmaster.mypage.MyCommentsTempDatas.dataset
+import com.android.arkmaster.mypage.MyCommentsTempDatas.getCharacterComment
 import com.android.arkmaster.user.SignInActivity.Companion.currentUserId
 import com.android.arkmaster.user.UserManager.userList
 
-class MyPageActivity : AppCompatActivity() {
+class MyPageActivity : AnimationActivity(TransitionMode.HORIZON) {
     private lateinit var binding: ActivityMyPageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +28,7 @@ class MyPageActivity : AppCompatActivity() {
 
         // E메일, 캐릭터명, 댓글, 날짜 = 모든 캐릭터의 댓글에서 해당 유저가 입력한 댓글의 캐릭터명, 댓글, 날짜를 가져오기(디테일 페이지)
 
-        binding.myCommentsRecyclerView.adapter = MyCommentsRecyclerAdapter(dataset)
+        binding.myCommentsRecyclerView.adapter = MyCommentsRecyclerAdapter(getCharacterComment(currentUserId))
         val currentUserDatas = userList.find { it.userId == currentUserId } // 현재 접속중인 유저의 정보
 
         binding.tvUserName.text = currentUserDatas?.nickname ?: "어흥"
@@ -60,7 +62,7 @@ class MyPageActivity : AppCompatActivity() {
             spinners.adapter = adapter
 
             /** 현재 저장 된 캐릭터로 초기 선택 **/
-            spinners.setSelection(if (id == -1) 0 else id)
+            spinners.setSelection(if (id == -1) 0 else id, false)
 
             AlertDialog
                 .Builder(this)

@@ -6,7 +6,7 @@ data class User(
     val userId: String,
     val userPw: String,
     val nickname: String,
-    var representativeCharacter: Int = 0
+    var representativeCharacter: Int? = null
 )
 
 
