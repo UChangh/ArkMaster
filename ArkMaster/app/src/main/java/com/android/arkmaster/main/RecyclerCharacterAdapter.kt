@@ -1,7 +1,5 @@
 package com.android.arkmaster.main
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.arkmaster.R
-import com.android.arkmaster.mypage.MyCommentsTempDatas
+import com.android.arkmaster.mypage.MyCommentsTempDatas.getCommentSize
 
 class RecyclerCharacterAdapter(
-    private var items: List<Character>,
-    private val context: Context
-) :
-    RecyclerView.Adapter<RecyclerCharacterAdapter.ViewHolder>() {
+    private var items: List<Character>
+) : RecyclerView.Adapter<RecyclerCharacterAdapter.ViewHolder>() {
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int)
     }
@@ -50,11 +46,9 @@ class RecyclerCharacterAdapter(
                 clipToOutline = true
             }
 
-            tvName.text = item.korName
-            val commentsSize = "${context.getString(R.string.my_comments)} ${
-                MyCommentsTempDatas().getCommentSize(item.korName)
-            }"
-            tvComment.text = commentsSize
+
+            val commentsSize = "${item.korName} (${getCommentSize(item.id)})"
+            tvName.text = commentsSize
 
             itemView.setOnClickListener {
                 val position = bindingAdapterPosition

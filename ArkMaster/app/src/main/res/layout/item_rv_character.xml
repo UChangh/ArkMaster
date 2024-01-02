@@ -19,8 +19,9 @@
         style="@style/ThemeTvCharacter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:padding="10dp"
         android:transitionName="transName" />
 
     <TextView
@@ -28,6 +29,7 @@
         style="@style/ThemeTvCharacter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:visibility="gone" />
 
 </LinearLayout>

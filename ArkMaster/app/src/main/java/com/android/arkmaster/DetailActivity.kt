@@ -2,22 +2,50 @@ package com.android.arkmaster
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.android.arkmaster.Value.characterId
-import com.android.arkmaster.main.CharacterManager
+import com.android.arkmaster.main.CharacterManager.getCharacters
+import com.android.arkmaster.mypage.Comments
+import com.android.arkmaster.mypage.MyCommentsTempDatas
+import com.android.arkmaster.mypage.MyCommentsTempDatas.addComment
+import com.android.arkmaster.mypage.MyCommentsTempDatas.dataset
+import com.android.arkmaster.mypage.MyCommentsTempDatas.getCharacterComment
+import com.android.arkmaster.user.SignInActivity.Companion.currentUserId
+import com.android.arkmaster.user.UserManager.getUserCharacter
+import com.android.arkmaster.user.UserManager.getUserNickname
 import java.time.LocalDate
+import kotlin.math.log
 
 class DetailActivity : AppCompatActivity() {
+    private val userComment: TextView by lazy {
+        findViewById(R.id.us_comment)
+    }
+    private val userCommentTime: TextView by lazy {
+        findViewById(R.id.us_time)
+    }
+
+    private val editText: EditText by lazy {
+        findViewById(R.id.edt_text)
+    }
+
+    private val userEmail: TextView by lazy {
+        findViewById(R.id.us_email)
+    }
+
+    private val userCharacterImage: ImageView by lazy {
+        findViewById(R.id.img_user)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val items = CharacterManager.getItems(applicationContext).sortedBy { it.korName }
+        val items = getCharacters().sortedBy { it.korName }
         val korName = findViewById<TextView>(R.id.korName)
         val profileImage = findViewById<ImageView>(R.id.profileImage)
         val type = findViewById<TextView>(R.id.type)
@@ -27,17 +55,12 @@ class DetailActivity : AppCompatActivity() {
         val info = findViewById<TextView>(R.id.info)
         val identityName = findViewById<TextView>(R.id.idenName)
         val identityInfo = findViewById<TextView>(R.id.ideninfo)
-        val editText = findViewById<EditText>(R.id.edt_text) // 댓글 입력창
         val btnInput = findViewById<Button>(R.id.btn_input) //댓글 입력 버튼
-        val userComment = findViewById<TextView>(R.id.us_comment) //댓글 보이는 곳
-        val userEmail = findViewById<TextView>(R.id.us_email) //댓글 작성자
-        val userCharacterImage = findViewById<ImageView>(R.id.img_user) // 댓글 작성자 대표 캐릭터 이미지
-        val userCommentTime = findViewById<TextView>(R.id.us_time) //댓글 작성 시간
 
 
         val characterIndex = intent.getIntExtra(characterId, -1)
         if (characterIndex == -1) {
-            return
+            finish()
         }
 
         korName.text = items[characterIndex].korName
@@ -57,18 +80,52 @@ class DetailActivity : AppCompatActivity() {
         userCommentTime.visibility = View.GONE
         userCharacterImage.visibility = View.GONE
 
+        // add
+        getComment(items[characterIndex].id)
+
         btnInput.setOnClickListener {
             val commentText = editText.text.toString().trim()
             if (commentText.isNotEmpty()) {
-                userComment.text = editText.text.toString()
-                userComment.visibility = View.VISIBLE
-                userEmail.visibility = View.VISIBLE
-                userCommentTime.visibility = View.VISIBLE
-                userCommentTime.text = "${LocalDate.now()}"
-                userCharacterImage.visibility = View.VISIBLE
-                editText.text = null
+                addComment(
+                    Comments(
+                        currentUserId,
+                        items[characterIndex].id,
+                        commentText,
+                        LocalDate.now()
+                    )
+                )
+                editText.text.clear()
+                recreate()
             }
         }
+    }
+
+    private fun getComment(id: Int) {
+        val comments = getCharacterComment(id)
+        if (comments.isEmpty()) {
+            return
+        }
+
+        userComment.visibility = View.VISIBLE
+        userEmail.visibility = View.VISIBLE
+        userCommentTime.visibility = View.VISIBLE
+        userCharacterImage.visibility = View.VISIBLE
+
+
+        val email = comments[comments.size - 1].userEmail
+        val characterImage = getUserCharacter(email)
+        userComment.text = comments[comments.size - 1].commentText
+        userCommentTime.text = "${comments[comments.size - 1].commentTime}"
+        userEmail.text = email
+
+        val imageResId = if (characterImage != 0) {
+            getCharacters()[characterImage].profileImage
+        } else {
+            R.drawable.ic_user
+        }
+        userCharacterImage.setImageResource(
+            imageResId
+        )
     }
 }
 
