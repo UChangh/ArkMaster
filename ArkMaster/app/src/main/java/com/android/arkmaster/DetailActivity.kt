@@ -1,25 +1,20 @@
 package com.android.arkmaster
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.android.arkmaster.Value.characterId
 import com.android.arkmaster.main.CharacterManager.getCharacters
 import com.android.arkmaster.mypage.Comments
-import com.android.arkmaster.mypage.MyCommentsTempDatas
 import com.android.arkmaster.mypage.MyCommentsTempDatas.addComment
-import com.android.arkmaster.mypage.MyCommentsTempDatas.dataset
 import com.android.arkmaster.mypage.MyCommentsTempDatas.getCharacterComment
 import com.android.arkmaster.user.SignInActivity.Companion.currentUserId
 import com.android.arkmaster.user.UserManager.getUserCharacter
-import com.android.arkmaster.user.UserManager.getUserNickname
 import java.time.LocalDate
-import kotlin.math.log
 
 class DetailActivity : AppCompatActivity() {
     private val userComment: TextView by lazy {

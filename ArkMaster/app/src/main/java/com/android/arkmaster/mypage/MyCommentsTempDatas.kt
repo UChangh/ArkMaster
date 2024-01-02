@@ -1,9 +1,6 @@
 package com.android.arkmaster.mypage
 
-import android.util.Log
-import org.w3c.dom.Comment
 import java.time.LocalDate
-import kotlin.math.log
 
 object MyCommentsTempDatas {
     val dataset = mutableListOf(
@@ -40,7 +37,6 @@ object MyCommentsTempDatas {
         )
     )
 
-
     // comments size
     fun getCommentSize(characterId: Int): Int = dataset.count { it.characterId == characterId }
 
@@ -55,6 +51,5 @@ object MyCommentsTempDatas {
     fun addComment(comment: Comments) {
         dataset.add(comment)
     }
-
 
 }

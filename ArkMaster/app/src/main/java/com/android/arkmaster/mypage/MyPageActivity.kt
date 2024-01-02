@@ -42,9 +42,7 @@ class MyPageActivity : AnimationActivity(TransitionMode.HORIZON) {
         } else {
             R.drawable.ic_user
         }
-        binding.mainCharImg.setImageResource(
-            imageResId
-        )
+        binding.mainCharImg.setImageResource(imageResId)
 
         // 스피너 팝업 띄우는 부분
         binding.tvSpinnerPopup.setOnClickListener {
